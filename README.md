@@ -5,6 +5,9 @@ This is a basic blog site built using PHP Laravel framework. The site allows use
 
 Features:
 >User authentication and authorization
+
 >User profile management
+
 >Blog post creation, editing, and deletion
+
 >Admin Control
