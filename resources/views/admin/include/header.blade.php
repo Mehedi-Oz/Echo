@@ -28,30 +28,35 @@
         <form class="searchbar d-none d-xl-flex ms-auto">
             <div class="position-absolute top-50 translate-middle-y search-icon ms-3"><i class="bi bi-search"></i></div>
             <input class="form-control" type="text" placeholder="Type here to search">
-            <div class="position-absolute top-50 translate-middle-y d-block d-xl-none search-close-icon"><i class="bi bi-x-lg"></i></div>
+            <div class="position-absolute top-50 translate-middle-y d-block d-xl-none search-close-icon"><i
+                    class="bi bi-x-lg"></i></div>
         </form>
         <div class="top-navbar-right ms-3">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" class="user-img" alt="">
-                            <div class="user-name d-none d-sm-block">Jhon Deo</div>
+                            <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" class="user-img"
+                                 alt="">
+                            <div class="user-name d-none d-sm-block"> {{ Auth::user()->name }}</div>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" alt="" class="rounded-circle" width="60" height="60">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" alt=""
+                                         class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
-                                        <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
+                                        <h6 class="mb-0 dropdown-user-name"> {{ Auth::user()->name }}</h6>
                                         <small class="mb-0 dropdown-user-designation text-secondary">HR Manager</small>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <a class="dropdown-item" href="pages-user-profile.html">
                                 <div class="d-flex align-items-center">
@@ -92,12 +97,22 @@
                                 </div>
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item" href="authentication-signup-with-header-footer.html">
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="authentication-signup-with-header-footer.html"
+                               onclick="event.preventDefault();document.getElementById('logoutForm').submit()">
                                 <div class="d-flex align-items-center">
                                     <div class="setting-icon"><i class="bi bi-lock-fill"></i></div>
-                                    <div class="setting-text ms-3"><span>Logout</span></div>
+                                    <div class="setting-text ms-3">
+                                        <span>
+                                            <form action="{{route('logout')}}" method="post" id="logoutForm">
+                                                @csrf
+                                            Logout
+                                            </form>
+                                        </span>
+                                    </div>
                                 </div>
                             </a>
                         </li>
@@ -218,94 +233,124 @@
                         <div class="header-message-list p-2">
                             <div class="dropdown-item bg-light radius-10 mb-1">
                                 <form class="dropdown-searchbar position-relative">
-                                    <div class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon"><i class="bi bi-search"></i></div>
+                                    <div class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon"><i
+                                            class="bi bi-search"></i></div>
                                     <input class="form-control" type="search" placeholder="Search Messages">
                                 </form>
                             </div>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Amelio Joly <span class="msg-time float-end text-secondary">1 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The standard chunk of lorem...</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Amelio Joly <span
+                                                class="msg-time float-end text-secondary">1 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The
+                                            standard chunk of lorem...</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-2.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-2.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Althea Cabardo <span class="msg-time float-end text-secondary">7 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Many desktop publishing</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Althea Cabardo <span
+                                                class="msg-time float-end text-secondary">7 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Many
+                                            desktop publishing</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-3.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-3.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Katherine Pechon <span class="msg-time float-end text-secondary">2 h</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Making this the first true</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Katherine Pechon <span
+                                                class="msg-time float-end text-secondary">2 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Making
+                                            this the first true</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-4.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-4.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Peter Costanzo <span class="msg-time float-end text-secondary">3 h</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">It was popularised in the 1960</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Peter Costanzo <span
+                                                class="msg-time float-end text-secondary">3 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">It
+                                            was popularised in the 1960</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-5.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-5.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Thomas Wheeler <span class="msg-time float-end text-secondary">1 d</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">If you are going to use a passage</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Thomas Wheeler <span
+                                                class="msg-time float-end text-secondary">1 d</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">If
+                                            you are going to use a passage</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-6.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-6.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Johnny Seitz <span class="msg-time float-end text-secondary">2 w</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">All the Lorem Ipsum generators</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Johnny Seitz <span
+                                                class="msg-time float-end text-secondary">2 w</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">All
+                                            the Lorem Ipsum generators</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-1.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Amelio Joly <span class="msg-time float-end text-secondary">1 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The standard chunk of lorem...</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Amelio Joly <span
+                                                class="msg-time float-end text-secondary">1 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The
+                                            standard chunk of lorem...</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-2.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-2.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Althea Cabardo <span class="msg-time float-end text-secondary">7 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Many desktop publishing</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Althea Cabardo <span
+                                                class="msg-time float-end text-secondary">7 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Many
+                                            desktop publishing</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-3.png" alt="" class="rounded-circle" width="52" height="52">
+                                    <img src="{{asset('admin-asset')}}/assets/images/avatars/avatar-3.png" alt=""
+                                         class="rounded-circle" width="52" height="52">
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Katherine Pechon <span class="msg-time float-end text-secondary">2 h</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Making this the first true</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Katherine Pechon <span
+                                                class="msg-time float-end text-secondary">2 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Making
+                                            this the first true</small>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="p-2">
-                            <div><hr class="dropdown-divider"></div>
+                            <div>
+                                <hr class="dropdown-divider">
+                            </div>
                             <a class="dropdown-item" href="#">
                                 <div class="text-center">View All Messages</div>
                             </a>
@@ -326,7 +371,8 @@
                         <div class="header-notifications-list p-2">
                             <div class="dropdown-item bg-light radius-10 mb-1">
                                 <form class="dropdown-searchbar position-relative">
-                                    <div class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon"><i class="bi bi-search"></i></div>
+                                    <div class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon"><i
+                                            class="bi bi-search"></i></div>
                                     <input class="form-control" type="search" placeholder="Search Messages">
                                 </form>
                             </div>
@@ -334,8 +380,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-basket2-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Orders <span class="msg-time float-end text-secondary">1 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You have recived new orders</small>
+                                        <h6 class="mb-0 dropdown-msg-user">New Orders <span
+                                                class="msg-time float-end text-secondary">1 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You
+                                            have recived new orders</small>
                                     </div>
                                 </div>
                             </a>
@@ -343,17 +391,22 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-people-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Customers <span class="msg-time float-end text-secondary">7 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5 new user registered</small>
+                                        <h6 class="mb-0 dropdown-msg-user">New Customers <span
+                                                class="msg-time float-end text-secondary">7 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5
+                                            new user registered</small>
                                     </div>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <div class="notification-box"><i class="bi bi-file-earmark-bar-graph-fill"></i></div>
+                                    <div class="notification-box"><i class="bi bi-file-earmark-bar-graph-fill"></i>
+                                    </div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">24 PDF File <span class="msg-time float-end text-secondary">2 h</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The pdf files generated</small>
+                                        <h6 class="mb-0 dropdown-msg-user">24 PDF File <span
+                                                class="msg-time float-end text-secondary">2 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The
+                                            pdf files generated</small>
                                     </div>
                                 </div>
                             </a>
@@ -361,8 +414,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-collection-play-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Time Response  <span class="msg-time float-end text-secondary">3 h</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5.1 min avarage time response</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Time Response <span
+                                                class="msg-time float-end text-secondary">3 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5.1
+                                            min avarage time response</small>
                                     </div>
                                 </div>
                             </a>
@@ -370,8 +425,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-cursor-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Product Approved  <span class="msg-time float-end text-secondary">1 d</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Your new product has approved</small>
+                                        <h6 class="mb-0 dropdown-msg-user">New Product Approved <span
+                                                class="msg-time float-end text-secondary">1 d</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Your
+                                            new product has approved</small>
                                     </div>
                                 </div>
                             </a>
@@ -379,8 +436,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-gift-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Comments <span class="msg-time float-end text-secondary">2 w</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New customer comments recived</small>
+                                        <h6 class="mb-0 dropdown-msg-user">New Comments <span
+                                                class="msg-time float-end text-secondary">2 w</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New
+                                            customer comments recived</small>
                                     </div>
                                 </div>
                             </a>
@@ -388,8 +447,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-droplet-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New 24 authors<span class="msg-time float-end text-secondary">1 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">24 new authors joined last week</small>
+                                        <h6 class="mb-0 dropdown-msg-user">New 24 authors<span
+                                                class="msg-time float-end text-secondary">1 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">24
+                                            new authors joined last week</small>
                                     </div>
                                 </div>
                             </a>
@@ -397,8 +458,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-mic-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Your item is shipped <span class="msg-time float-end text-secondary">7 m</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Successfully shipped your item</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Your item is shipped <span
+                                                class="msg-time float-end text-secondary">7 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Successfully
+                                            shipped your item</small>
                                     </div>
                                 </div>
                             </a>
@@ -406,8 +469,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-lightbulb-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Defense Alerts <span class="msg-time float-end text-secondary">2 h</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">45% less alerts last 4 weeks</small>
+                                        <h6 class="mb-0 dropdown-msg-user">Defense Alerts <span
+                                                class="msg-time float-end text-secondary">2 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">45%
+                                            less alerts last 4 weeks</small>
                                     </div>
                                 </div>
                             </a>
@@ -415,8 +480,10 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-bookmark-heart-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">4 New Sign Up <span class="msg-time float-end text-secondary">2 w</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New 4 user registartions</small>
+                                        <h6 class="mb-0 dropdown-msg-user">4 New Sign Up <span
+                                                class="msg-time float-end text-secondary">2 w</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New
+                                            4 user registartions</small>
                                     </div>
                                 </div>
                             </a>
@@ -424,14 +491,18 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-briefcase-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">All Documents Uploaded <span class="msg-time float-end text-secondary">1 mo</span></h6>
-                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Sussessfully uploaded all files</small>
+                                        <h6 class="mb-0 dropdown-msg-user">All Documents Uploaded <span
+                                                class="msg-time float-end text-secondary">1 mo</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Sussessfully
+                                            uploaded all files</small>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="p-2">
-                            <div><hr class="dropdown-divider"></div>
+                            <div>
+                                <hr class="dropdown-divider">
+                            </div>
                             <a class="dropdown-item" href="#">
                                 <div class="text-center">View All Notifications</div>
                             </a>
